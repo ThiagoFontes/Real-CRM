@@ -35,6 +35,15 @@ public class Main {
             frame.setState(Frame.ICONIFIED);
         });
 
+        JPanel titleContainer = new JPanel(new FlowLayout());
+        JLabel title = new JLabel("REAL CRM");
+        title.setForeground(Color.white);
+        titleContainer.add(title);
+        titleContainer.setBackground(Color.DARK_GRAY);
+        titleContainer.setPreferredSize(new Dimension(600, 30));
+
+
+        top.add(titleContainer);
         top.add(m);
         top.add(closeBtn());
 
@@ -43,7 +52,7 @@ public class Main {
         frame.getRootPane().setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 500);
-//        frame.pack();
+        //frame.pack();
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
