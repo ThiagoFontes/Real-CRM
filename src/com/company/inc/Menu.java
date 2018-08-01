@@ -18,9 +18,13 @@ public class Menu extends JPanel {
             label = new JLabel();
             label.setText(items[i]);
             label.setForeground(Color.BLACK);
+            label.setHorizontalAlignment(JLabel.CENTER);
             if (i == current) {
                 label.setForeground(Color.GRAY);
             }
+
+            label.setPreferredSize(new Dimension(110, 30));
+            //label.setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.BLACK));
             super.add(label);
         }
         super.setLayout(new FlowLayout(FlowLayout.RIGHT));
