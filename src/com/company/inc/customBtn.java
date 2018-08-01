@@ -1,7 +1,5 @@
-package com.company;
-
+package com.company.inc;
 import javax.swing.*;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
@@ -17,6 +15,21 @@ public class customBtn extends JButton implements MouseListener {
         setForeground(Color.white);
         setBackground(Color.black);
         //setContentAreaFilled(false);
+        setFocusPainted(false);
+        addMouseListener(this);
+        setVisible(true);
+    }
+
+    /**
+     * Constructor to define text and background/foreground colors
+     * @param text Text that goes into the button
+     * @param foreground Foreground Color
+     * @param Background Background Color
+     */
+    public customBtn (String text, Color foreground, Color Background){
+        super(text);
+        setForeground(foreground);
+        setBackground(Background);
         setFocusPainted(false);
         addMouseListener(this);
         setVisible(true);

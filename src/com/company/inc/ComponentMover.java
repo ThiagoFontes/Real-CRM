@@ -1,5 +1,4 @@
-package com.company;
-
+package com.company.inc;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.JComponent;
