@@ -35,6 +35,17 @@ public class customBtn extends JButton implements MouseListener {
         setVisible(true);
     }
 
+    public customBtn(String text, Dimension preferredSize, Color foreground, Color Background){
+        super(text);
+        setPreferredSize(preferredSize);
+        setFont(new Font("Sans", Font.PLAIN, 5));
+        setForeground(foreground);
+        setBackground(Background);
+        setFocusPainted(false);
+        addMouseListener(this);
+        setVisible(true);
+    }
+
     /*
     @Override
       protected void paintComponent(Graphics g) {

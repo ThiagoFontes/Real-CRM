@@ -30,12 +30,12 @@ public class Main extends JFrame {
         //drag topbar
         ComponentMover cm = new ComponentMover(this ,top);
         //Create minimize button
-        JButton m = new customBtn("-", Color.white, Color.DARK_GRAY);
+        JButton m = new customBtn("-", Color.black, Color.darkGray);
         m.addActionListener(e -> {
             super.setState(Frame.ICONIFIED);
         });
         //Create close button
-        JButton closeBtn = new customBtn("X", Color.white, Color.DARK_GRAY);
+        JButton closeBtn = new customBtn("X", Color.black, Color.DARK_GRAY);
         closeBtn.addActionListener(e -> System.exit(0));
 
         // Definição da barra de título
@@ -60,7 +60,7 @@ public class Main extends JFrame {
 
         super.add("North", top);
         super.setUndecorated(true);
-        super.getRootPane().setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.BLACK));
+        super.getRootPane().setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.darkGray));
         super.setSize(800, 500);
         super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         super.setLocationRelativeTo(null);
@@ -68,13 +68,21 @@ public class Main extends JFrame {
 
     }
 
+    private void reloadTela(){
+        content = new JPanel(new BorderLayout());
+        createMenu(menu);
+        content.add(menu, BorderLayout.NORTH);
+    }
+
     private  void setTelaInicial () {
+        //reloadTela();
         content.add("Center", new TelaInicial());
         this.add("Center", content);
         super.setVisible(true);
     }
 
     private  void setTelaContatos () {
+        //reloadTela();
         content.add("Center", new TelaContatos());
         this.add("Center", content);
         super.setVisible(true);
@@ -161,6 +169,17 @@ public class Main extends JFrame {
     }
 
     public static void main(String[] args) {
+        try {
+            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (UnsupportedLookAndFeelException e) {
+            e.printStackTrace();
+        }
         Main tela = new Main();
         tela.setTelaInicial();
     }
