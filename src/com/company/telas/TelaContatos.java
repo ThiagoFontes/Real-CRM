@@ -17,6 +17,7 @@ public class TelaContatos extends JPanel {
         scrollPane = new JScrollPane(contatoList);
         scrollPane.setPreferredSize(new Dimension(200, 300));
 
+
         super.add(scrollPane, BorderLayout.WEST);
         super.setBorder(BorderFactory.createMatteBorder(30, 30, 30, 30, UIManager.getColor ( "Panel.background" )));
         //super.add(sub, BorderLayout.PAGE_END);

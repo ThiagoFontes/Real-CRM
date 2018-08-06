@@ -3,6 +3,9 @@ import com.company.inc.ComponentMover;
 import com.company.inc.customBtn;
 import com.company.telas.TelaContatos;
 import com.company.telas.TelaInicial;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
@@ -14,7 +17,7 @@ import java.util.EventListener;
  * this way we will use only one JFrame to support everything
  */
 public class Main extends JFrame {
-    private String menuStrings[] = {"Início", "Contatos", "Negociações", "Relacionamento"};
+    protected final String menuStrings[] = {"Início", "Contatos", "Negociações", "Relacionamento"};
     private JPanel content = new JPanel(new BorderLayout());
     private JLabel[] label = new JLabel[menuStrings.length];
     private JPanel menu = new JPanel();
@@ -49,23 +52,7 @@ public class Main extends JFrame {
         top.add(closeBtn);
 
         //criando menu
-        menu.setLayout( new FlowLayout(FlowLayout.RIGHT));
-        for (int i = 0; i < menuStrings.length; i++) {
-            label[i] = new JLabel();
-            label[i].setText(menuStrings[i]);
-            label[i].setForeground(Color.BLACK);
-            label[i].setHorizontalAlignment(JLabel.CENTER);
-            //Começa na página inicial
-            if (i == current) {
-                label[i].setForeground(Color.GRAY);
-            }
-
-            label[i].setPreferredSize(new Dimension(110, 30));
-            //label[i].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
-            label[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
-            label[i].addMouseListener(ml);
-            menu.add(label[i]);
-        }
+        createMenu(menu);
         content.add(menu, BorderLayout.NORTH);
 
 
@@ -92,11 +79,13 @@ public class Main extends JFrame {
         this.add("Center", content);
         super.setVisible(true);
     }
-    MouseListener ml = new MouseListener() {
+
+    //Menu Mouse Listener
+    private MouseListener ml = new MouseListener() {
 
         private void refreshColors(MouseEvent e){
             for (int i = 0; i < menuStrings.length; i++) {
-                if((e.getSource() == label[i]) && (i != current)) {
+                if((e.getSource() != label[i]) && (i != current)) {
                     label[i].setForeground(Color.black);
                 } else if (i == current) {
                     label[i].setForeground(Color.GRAY);
@@ -110,7 +99,17 @@ public class Main extends JFrame {
                 if(e.getSource() == label[k]) {
                     current = k;
                     refreshColors(e);
-                    setTelaContatos();
+                    switch (k) {
+                        case 0:     //Inicial
+                            setTelaInicial();
+                            break;
+                        case 1:
+                            setTelaContatos();
+                            break;
+                        default:
+                            setTelaInicial();
+                            break;
+                    }
                 }
             }
         }
@@ -139,6 +138,27 @@ public class Main extends JFrame {
             refreshColors(e);
         }
     };
+
+    //Create Menu
+    private void createMenu(JPanel m) {
+        m.setLayout( new FlowLayout(FlowLayout.RIGHT));
+        for (int i = 0; i < menuStrings.length; i++) {
+            label[i] = new JLabel();
+            label[i].setText(menuStrings[i]);
+            label[i].setForeground(Color.BLACK);
+            label[i].setHorizontalAlignment(JLabel.CENTER);
+            //Começa na página inicial
+            if (i == current) {
+                label[i].setForeground(Color.GRAY);
+            }
+
+            label[i].setPreferredSize(new Dimension(110, 30));
+            //label[i].setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.BLACK));
+            label[i].setCursor(new Cursor(Cursor.HAND_CURSOR));
+            label[i].addMouseListener(ml);
+            m.add(label[i]);
+        }
+    }
 
     public static void main(String[] args) {
         Main tela = new Main();
