@@ -1,16 +1,13 @@
 package com.company;
 import com.company.inc.ComponentMover;
-import com.company.inc.customBtn;
+import com.company.inc.CustomBtn;
 import com.company.telas.TelaContatos;
 import com.company.telas.TelaInicial;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.EventListener;
 
 /**
  * Defines the main frame that will be suporting each window content,
@@ -30,12 +27,12 @@ public class Main extends JFrame {
         //drag topbar
         ComponentMover cm = new ComponentMover(this ,top);
         //Create minimize button
-        JButton m = new customBtn("-", Color.black, Color.darkGray);
+        JButton m = new CustomBtn("-", Color.black, Color.darkGray);
         m.addActionListener(e -> {
             super.setState(Frame.ICONIFIED);
         });
         //Create close button
-        JButton closeBtn = new customBtn("X", Color.black, Color.DARK_GRAY);
+        JButton closeBtn = new CustomBtn("X", Color.black, Color.DARK_GRAY);
         closeBtn.addActionListener(e -> System.exit(0));
 
         // Definição da barra de título
@@ -53,12 +50,10 @@ public class Main extends JFrame {
 
         //criando menu
         createMenu(menu);
-        content.add(menu, BorderLayout.NORTH);
-
 
         // Adicionando componentes a janela principal
-
         super.add("North", top);
+        super.add(BorderLayout.CENTER,this.content);
         super.setUndecorated(true);
         super.getRootPane().setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.darkGray));
         super.setSize(800, 500);
@@ -68,23 +63,25 @@ public class Main extends JFrame {
 
     }
 
-    private void reloadTela(){
-        content = new JPanel(new BorderLayout());
-        createMenu(menu);
-        content.add(menu, BorderLayout.NORTH);
-    }
-
     private  void setTelaInicial () {
-        //reloadTela();
+        //super.setVisible(false);
+        content.removeAll();
+        content.add(menu, BorderLayout.NORTH);
         content.add("Center", new TelaInicial());
-        this.add("Center", content);
+        super.add(BorderLayout.CENTER,this.content);
+        content.validate();
+        content.repaint();
         super.setVisible(true);
     }
 
     private  void setTelaContatos () {
-        //reloadTela();
+        //super.setVisible(false);
+        content.removeAll();
+        content.add(menu, BorderLayout.NORTH);
         content.add("Center", new TelaContatos());
-        this.add("Center", content);
+        super.add(BorderLayout.CENTER,this.content);
+        content.validate();
+        content.repaint();
         super.setVisible(true);
     }
 

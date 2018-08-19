@@ -7,8 +7,8 @@ import java.awt.event.MouseListener;
 /**
  * Created by Thiago Fontes on 30/07/2018.
  */
-public class customBtn extends JButton implements MouseListener {
-    public customBtn(String text)
+public class CustomBtn extends JButton implements MouseListener {
+    public CustomBtn(String text)
     {
         super(text);
         //setBorder(new LineBorder(Color.LIGHT_GRAY, 0, true));
@@ -26,7 +26,7 @@ public class customBtn extends JButton implements MouseListener {
      * @param foreground Foreground Color
      * @param Background Background Color
      */
-    public customBtn (String text, Color foreground, Color Background){
+    public CustomBtn(String text, Color foreground, Color Background){
         super(text);
         setForeground(foreground);
         setBackground(Background);
@@ -35,7 +35,7 @@ public class customBtn extends JButton implements MouseListener {
         setVisible(true);
     }
 
-    public customBtn(String text, Dimension preferredSize, Color foreground, Color Background){
+    public CustomBtn(String text, Dimension preferredSize, Color foreground, Color Background){
         super(text);
         setPreferredSize(preferredSize);
         setFont(new Font("Sans", Font.PLAIN, 5));
