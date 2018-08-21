@@ -1,6 +1,7 @@
 package com.company;
 import com.company.inc.ComponentMover;
 import com.company.inc.CustomBtn;
+import com.company.inc.SQLiteJDBCDriverConnection;
 import com.company.telas.TelaContatos;
 import com.company.telas.TelaInicial;
 import com.company.telas.TelaNegociacoes;
@@ -18,6 +19,10 @@ import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.sql.Connection;
+import java.sql.DatabaseMetaData;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
  * Defines the main frame that will be suporting each window content,
@@ -230,7 +235,26 @@ public class Main extends JFrame {
         m.setOpaque(false);
     }
 
+//    public static void createNewDatabase(String fileName) {
+//
+//        String url = "jdbc:sqlite:G:/Real-CRM/src/com/company/database" + fileName;
+//
+//        try (Connection conn = DriverManager.getConnection(url)) {
+//            if (conn != null) {
+//                DatabaseMetaData meta = conn.getMetaData();
+//                System.out.println("The driver name is " + meta.getDriverName());
+//                System.out.println("A new database has been created.");
+//            }
+//
+//        } catch (SQLException e) {
+//            System.out.println(e.getMessage());
+//        }
+//    }
+
     public static void main(String[] args) {
+//        createNewDatabase("local.db");
+        SQLiteJDBCDriverConnection con = new SQLiteJDBCDriverConnection();
+        con.connect();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 Main tela = new Main();
