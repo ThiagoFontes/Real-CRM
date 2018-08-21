@@ -5,7 +5,7 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
- * Created by Thiago Fontes on 21/08/2018.
+ * Edited by Thiago Fontes on 21/08/2018.
  */
 public class SQLiteJDBCDriverConnection {
     /**
