@@ -24,39 +24,42 @@ public class CustomBtn extends JButton implements MouseListener {
      * Constructor to define text and background/foreground colors
      * @param text Text that goes into the button
      * @param foreground Foreground Color
-     * @param Background Background Color
+     * @param background background Color
      */
-    public CustomBtn(String text, Color foreground, Color Background){
+    public CustomBtn(String text, Color foreground, Color background){
         super(text);
         setForeground(foreground);
-        setBackground(Background);
+        setBackground(background);
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
         setFocusPainted(false);
         addMouseListener(this);
         setVisible(true);
     }
 
-    public CustomBtn(String text, Dimension preferredSize, Color foreground, Color Background){
+    public CustomBtn(String text, Dimension preferredSize, Color foreground, Color background){
         super(text);
         setPreferredSize(preferredSize);
         setFont(new Font("Sans", Font.PLAIN, 5));
+        setCursor(new Cursor(Cursor.HAND_CURSOR));
         setForeground(foreground);
-        setBackground(Background);
+        setBackground(background);
         setFocusPainted(false);
         addMouseListener(this);
         setVisible(true);
     }
 
-    /*
     @Override
-      protected void paintComponent(Graphics g) {
-      Graphics2D g2 = (Graphics2D) g.create();
-        g2.setPaint(new GradientPaint(new Point(0, 0), Color.WHITE, new Point(0,
-                getHeight()), Color.PINK.darker()));
-        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 30, 30);
-        g2.setPaint(Color.BLACK);
-        g2.drawString(getText(), 30, 12);
+    protected void paintComponent(Graphics g) {
+        Graphics2D g2 = (Graphics2D) g.create();
+        g2.setPaint(getBackground());
+        g2.setPaint(new GradientPaint(new Point(0, 0), getBackground(), new Point(0,getHeight()),getBackground()));
+        g2.fillRoundRect(0, 0, getWidth(), getHeight(), 3, 3);
+        g2.setPaint(getForeground());
+        FontMetrics metrics = g.getFontMetrics();
+
+        g2.drawString(getText(),(getWidth()-metrics.stringWidth(getText()))/2 ,(metrics.getHeight()));
         g2.dispose();
-    }*/
+    }
 
     @Override
     public void mouseClicked(MouseEvent e) {

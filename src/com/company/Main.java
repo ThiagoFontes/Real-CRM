@@ -3,7 +3,9 @@ import com.company.inc.ComponentMover;
 import com.company.inc.CustomBtn;
 import com.company.telas.TelaContatos;
 import com.company.telas.TelaInicial;
-import org.pushingpixels.substance.api.UiThreadingViolationException;
+import com.company.telas.TelaNegociacoes;
+import com.company.telas.TelaRelacionamentos;
+import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
 import org.pushingpixels.substance.api.skin.*;
 
 import javax.swing.*;
@@ -23,23 +25,40 @@ public class Main extends JFrame {
     private int current = 0;
 
     public Main () {
+        try {
+            UIManager.setLookAndFeel(new WindowsLookAndFeel());
+        } catch (UnsupportedLookAndFeelException e) {
+            SwingUtilities.invokeLater(new Runnable() {
+                public void run() {
+                    try {
+//                    UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
+                        UIManager.setLookAndFeel(new SubstanceCeruleanLookAndFeel());
+                    } catch (UnsupportedLookAndFeelException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+        }
         super.setLayout(new BorderLayout());
         JPanel top = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         top.setBackground(Color.DARK_GRAY);
         //drag topbar
         ComponentMover cm = new ComponentMover(this ,top);
         //Create minimize button
-        JButton m = new CustomBtn("-", Color.black, Color.darkGray);
+        CustomBtn m = new CustomBtn("-", Color.WHITE, Color.darkGray.brighter());
+        m.setOpaque(false);
         m.addActionListener(e -> {
             super.setState(Frame.ICONIFIED);
         });
         //Create close button
-        JButton closeBtn = new CustomBtn("X", Color.black, Color.DARK_GRAY);
+        JButton closeBtn = new CustomBtn("X", Color.WHITE, Color.darkGray.brighter());
         closeBtn.addActionListener(e -> System.exit(0));
-
+        closeBtn.setOpaque(false);
         // Definição da barra de título
         JPanel titleContainer = new JPanel(new FlowLayout());
-        JLabel title = new JLabel("REAL CRM");
+        JLabel title = new JLabel("<html>" +
+                "<body style=\"text-align:left;\">" +
+                "REAL CRM</body></html>", SwingConstants.LEFT);
 
         title.setForeground(Color.white);
         titleContainer.add(title);
@@ -52,11 +71,11 @@ public class Main extends JFrame {
 
         //criando menu
         createMenu(menu);
-
+        //super.getContentPane().setBackground(new Color(229, 233,242));
         // Adicionando componentes a janela principal
         super.add("North", top);
         super.add(BorderLayout.CENTER,this.content);
-        //super.setUndecorated(true);
+        super.setUndecorated(true);
         super.getRootPane().setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.darkGray));
         super.setSize(800, 500);
         super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -69,6 +88,7 @@ public class Main extends JFrame {
         //super.setVisible(false);
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
+        content.setBackground(new Color(229, 233,242));
         content.add("Center", new TelaInicial());
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
@@ -81,6 +101,27 @@ public class Main extends JFrame {
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
         content.add("Center", new TelaContatos());
+        super.add(BorderLayout.CENTER,this.content);
+        content.validate();
+        content.repaint();
+        super.setVisible(true);
+    }
+
+    private  void setTelaRelacionamentos () {
+        //super.setVisible(false);
+        content.removeAll();
+        content.add(menu, BorderLayout.NORTH);
+        content.add("Center", new TelaRelacionamentos());
+        super.add(BorderLayout.CENTER,this.content);
+        content.validate();
+        content.repaint();
+        super.setVisible(true);
+    }
+
+    private  void setTelaNegociacoes() {
+        content.removeAll();
+        content.add(menu, BorderLayout.NORTH);
+        content.add("Center", new TelaNegociacoes());
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
@@ -112,6 +153,12 @@ public class Main extends JFrame {
                             break;
                         case 1:
                             setTelaContatos();
+                            break;
+                        case 2:
+                            setTelaNegociacoes();
+                            break;
+                        case 3:
+                            setTelaRelacionamentos();
                             break;
                         default:
                             setTelaInicial();
@@ -165,20 +212,11 @@ public class Main extends JFrame {
             label[i].addMouseListener(ml);
             m.add(label[i]);
         }
+        m.setOpaque(false);
     }
 
-    public static void main(String[] args) throws UnsupportedLookAndFeelException {
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                try {
-//                    UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
-                    UIManager.setLookAndFeel(new SubstanceCeruleanLookAndFeel());
-                } catch (UnsupportedLookAndFeelException e) {
-                    e.printStackTrace();
-                }
-                Main tela = new Main();
-                tela.setTelaInicial();
-            }
-        });
+    public static void main(String[] args) {
+        Main tela = new Main();
+        tela.setTelaInicial();
     }
 }

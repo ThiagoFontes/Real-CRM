@@ -6,9 +6,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Created by Thiago Fontes on 04/08/2018.
+ * Created by Thiago Fontes on 21/08/2018.
  */
-public class TelaContatos extends JPanel {
+public class TelaRelacionamentos extends JPanel {
     private String[] lista = { "Bird", "Cat", "Dog", "Rabbittttttttttttttttttttttttttttttttttttttttttttttttt", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig" };
     private String conteudo = "nome: aaaa\nTelefone: 00000\n.\n.\n.\n";
     private JScrollPane scrollPane;
@@ -19,7 +19,7 @@ public class TelaContatos extends JPanel {
     private JPanel editPanel;
     private CustomBtn create;
 
-    public TelaContatos ()  {
+    public TelaRelacionamentos() {
         super.setLayout(new BorderLayout());
 
         JList contatoList = new JList(lista);
