@@ -1,6 +1,7 @@
 package com.company.telas;
 
 import com.company.inc.CustomBtn;
+import com.company.inc.HintTextFieldUI;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +12,8 @@ import java.awt.*;
 public class TelaNegociacoes extends JPanel {
     private String[] lista = { "Bird", "Cat", "Dog", "Rabbittttttttttttttttttttttttttttttttttttttttttttttttt", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig", "Cat", "Dog", "Rabbit", "Pig" };
     private String conteudo = "nome: aaaa\nTelefone: 00000\n.\n.\n.\n";
+    private JPanel sidePanel;
+    private JTextField filtro;
     private JScrollPane scrollPane;
     private JTextArea texto;
     private JPanel bounds;
@@ -26,9 +29,17 @@ public class TelaNegociacoes extends JPanel {
 
         scrollPane = new JScrollPane(contatoList);
         scrollPane.setPreferredSize(new Dimension(200, 300));
-        scrollPane.setBorder(BorderFactory.createMatteBorder(10, 0, 20, 30, new Color(229, 233,242)));
+
+        filtro = new JTextField();
+        filtro.setUI(new HintTextFieldUI("Contato", true));
+
+        sidePanel = new JPanel(new BorderLayout());
+        sidePanel.add(filtro, BorderLayout.NORTH);
+        sidePanel.add(scrollPane, BorderLayout.CENTER);
+        sidePanel.setBorder(BorderFactory.createMatteBorder(10, 0, 20, 30, new Color(229, 233,242)));
 
         texto = new JTextArea(conteudo);
+        texto.setEditable(false);
         texto.setPreferredSize(new Dimension(500,300));
         texto.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10,new Color(219, 224,233)));
 
@@ -50,7 +61,7 @@ public class TelaNegociacoes extends JPanel {
         //bounds.add(BorderLayout.SOUTH, create);
 
         super.setBackground(new Color(229, 233,242));
-        super.add(scrollPane, BorderLayout.WEST);
+        super.add(sidePanel, BorderLayout.WEST);
         super.add(bounds, BorderLayout.CENTER);
         super.add(create, BorderLayout.SOUTH);
         super.setBorder(BorderFactory.createMatteBorder(30, 30, 30, 30, new Color(229, 233,242)));

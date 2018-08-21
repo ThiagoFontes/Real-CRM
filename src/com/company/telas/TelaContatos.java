@@ -29,6 +29,7 @@ public class TelaContatos extends JPanel {
         scrollPane.setBorder(BorderFactory.createMatteBorder(10, 0, 20, 30, new Color(229, 233,242)));
 
         texto = new JTextArea(conteudo);
+        texto.setEditable(false);
         texto.setPreferredSize(new Dimension(500,300));
         texto.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10,new Color(219, 224,233)));
 
