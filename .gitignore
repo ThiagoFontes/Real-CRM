@@ -26,4 +26,4 @@ hs_err_pid*
 /src/com/company/lib/
 .idea/workspace.xml
 out/
-/src/com/company/lib/jcip-annotations-1.0.jar
+!/src/com/company/lib/
