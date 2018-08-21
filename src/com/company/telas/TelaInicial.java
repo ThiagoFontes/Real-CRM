@@ -1,5 +1,7 @@
 package com.company.telas;
 
+import org.pushingpixels.substance.api.UiThreadingViolationException;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -7,7 +9,7 @@ import java.awt.*;
  * Created by Thiago Fontes on 31/07/2018.
  */
 public class TelaInicial extends JPanel {
-    public TelaInicial ()  {
+    public TelaInicial () {
         super.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         JLabel title = new JLabel("<html>" +
                 "<body style=\"text-align:center;padding-right:56px;padding-top:40px;\">" +

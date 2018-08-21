@@ -3,6 +3,8 @@ import com.company.inc.ComponentMover;
 import com.company.inc.CustomBtn;
 import com.company.telas.TelaContatos;
 import com.company.telas.TelaInicial;
+import org.pushingpixels.substance.api.UiThreadingViolationException;
+import org.pushingpixels.substance.api.skin.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -54,7 +56,7 @@ public class Main extends JFrame {
         // Adicionando componentes a janela principal
         super.add("North", top);
         super.add(BorderLayout.CENTER,this.content);
-        super.setUndecorated(true);
+        //super.setUndecorated(true);
         super.getRootPane().setBorder(BorderFactory.createMatteBorder(0, 1, 1, 1, Color.darkGray));
         super.setSize(800, 500);
         super.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -165,19 +167,18 @@ public class Main extends JFrame {
         }
     }
 
-    public static void main(String[] args) {
-        try {
-            UIManager.setLookAndFeel("com.sun.java.swing.plaf.windows.WindowsLookAndFeel");
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        } catch (UnsupportedLookAndFeelException e) {
-            e.printStackTrace();
-        }
-        Main tela = new Main();
-        tela.setTelaInicial();
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                try {
+//                    UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
+                    UIManager.setLookAndFeel(new SubstanceCeruleanLookAndFeel());
+                } catch (UnsupportedLookAndFeelException e) {
+                    e.printStackTrace();
+                }
+                Main tela = new Main();
+                tela.setTelaInicial();
+            }
+        });
     }
 }
