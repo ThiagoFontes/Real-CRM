@@ -52,7 +52,7 @@ public class Usuario {
 
         ResultSet check = null;
 
-        String sql = "SELECT * FROM Usuario WHERE email = '"+ getEmail() +"';";
+        String sql = "SELECT * FROM Usuario WHERE email = '"+ email +"';";
 
             try{
                 PreparedStatement ps;
