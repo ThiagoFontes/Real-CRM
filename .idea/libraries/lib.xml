@@ -1,12 +1,14 @@
 <component name="libraryTable">
-  <library name="com.github.insubstantial:substance:7.3" type="repository">
-    <properties maven-id="com.github.insubstantial:substance:7.3" />
+  <library name="lib">
     <CLASSES>
       <root url="jar://$PROJECT_DIR$/src/com/company/lib/substance-7.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/company/lib/zktheme-8.0.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/com/company/lib/trident-7.3-swing.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/company/lib/sqlite-jdbc-3.8.11.2.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/com/company/lib/jcip-annotations-1.0.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/com/company/lib/laf-plugin-7.3.jar!/" />
       <root url="jar://$PROJECT_DIR$/src/com/company/lib/laf-widget-7.3.jar!/" />
+      <root url="jar://$PROJECT_DIR$/src/com/company/lib/servlet-api-2.4.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />
