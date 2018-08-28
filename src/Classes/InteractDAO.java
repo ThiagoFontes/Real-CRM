@@ -1,6 +1,8 @@
 package Classes;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class InteractDAO {
     private Connection conn;
@@ -228,6 +230,16 @@ public class InteractDAO {
         return false;
     }
 
+    public List<Contato> listarContatos(){
+        List<Contato> lista = new ArrayList<>();
+        connect();
+        String sql = "SELECT * FROM mydb.Contato ;";
+        //while(){
+        // incompleto , nao sei como listar
+        //}
 
+        disconnect();
+        return lista;
+    }
 
 }
