@@ -1,37 +1,28 @@
-package com.company;
+package Classes;
 
-import java.util.Date;
+import java.sql.Date;
 
-/**
- * Created by Thiago Fontes on 18/08/2018.
- */
 public class Contato {
+
+    // atributos da classe de acordo com o diagrama de classe a nivel de projeto
     private String cpf_cnpj;
     private String nome_razao;
+    private String categoria;
     private Date data_nasc;
     private String canal_captacao;
-    private String e_mail;
+    private String email;
     private String telefone;
     private String facebook;
-    private String instagram;
+    private String instragram;
     private String twitter;
-    private String linkedin;
+    private String linkedIn;
 
-    //Construtor com todas as variáveis
-    public Contato (String cpf_cnpj, String nome_razao, Date data_nasc, String canal_captacao, String e_mail, String telefone, String facebook, String instagram, String twitter, String linkedin) {
-        this.cpf_cnpj = cpf_cnpj;
-        this.nome_razao = nome_razao;
-        this.data_nasc = data_nasc;
-        this.canal_captacao = canal_captacao;
-        this.e_mail = e_mail;
-        this.telefone = telefone;
-        this.facebook = facebook;
-        this.instagram = instagram;
-        this.twitter = twitter;
-        this.linkedin = linkedin;
-    }
+    //CONSTRUTOR VAZIO
+    public Contato() {}
 
+    //Metodos listados no diagrama são apenas os gets e sets segundo professor
 
+    //gets and sets dos atributos da classe
     public String getCpf_cnpj() {
         return cpf_cnpj;
     }
@@ -46,6 +37,14 @@ public class Contato {
 
     public void setNome_razao(String nome_razao) {
         this.nome_razao = nome_razao;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
     }
 
     public Date getData_nasc() {
@@ -64,12 +63,12 @@ public class Contato {
         this.canal_captacao = canal_captacao;
     }
 
-    public String getE_mail() {
-        return e_mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setE_mail(String e_mail) {
-        this.e_mail = e_mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getTelefone() {
@@ -88,12 +87,12 @@ public class Contato {
         this.facebook = facebook;
     }
 
-    public String getInstagram() {
-        return instagram;
+    public String getInstragram() {
+        return instragram;
     }
 
-    public void setInstagram(String instagram) {
-        this.instagram = instagram;
+    public void setInstragram(String instragram) {
+        this.instragram = instragram;
     }
 
     public String getTwitter() {
@@ -104,11 +103,11 @@ public class Contato {
         this.twitter = twitter;
     }
 
-    public String getLinkedin() {
-        return linkedin;
+    public String getLinkedIn() {
+        return linkedIn;
     }
 
-    public void setLinkedin(String linkedin) {
-        this.linkedin = linkedin;
+    public void setLinkedIn(String linkedIn) {
+        this.linkedIn = linkedIn;
     }
 }
