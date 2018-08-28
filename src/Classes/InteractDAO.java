@@ -61,6 +61,7 @@ public class InteractDAO {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
+            disconnect();
             return false;
         }
 
@@ -80,6 +81,7 @@ public class InteractDAO {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
+            disconnect();
             return false;
         }
 
@@ -98,6 +100,7 @@ public class InteractDAO {
             statement.executeUpdate(sql);
         } catch (SQLException e) {
             e.printStackTrace();
+            disconnect();
             return false;
         }
 
@@ -130,6 +133,100 @@ public class InteractDAO {
 
     //Metodos de Crud para Contato
 
+    public Contato buscarContato(String cpf_cnpj){
+        Contato resultado = null;
+
+        connect();
+        String sql = "SELECT * FROM mydb.Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +";";
+        Statement statement;
+        try{
+            statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                resultado.setCpf_cnpj(rs.getString("CPF_CNPJ"));
+                resultado.setEmail(rs.getString("email"));
+                resultado.setTelefone(rs.getString("telefone"));
+                resultado.setNome_razao(rs.getString("Nome"));
+                resultado.setCategoria(rs.getString("categoria"));
+                resultado.setData_nasc(rs.getDate("data_nasc"));
+                resultado.setCanal_captacao(rs.getString("canal_captacao"));
+                resultado.setFacebook(rs.getString("facebook"));
+                resultado.setInstagram(rs.getString("instagram"));
+                resultado.setTwitter(rs.getString("twitter"));
+                resultado.setLinkedIn(rs.getString("linkedin"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        disconnect();
+        return resultado;
+    }
+
+    public boolean createContato(Contato novo){
+        connect();
+
+        String sql = "INSERT INTO mydb.Contato VALUES('"+ novo.getCpf_cnpj() +"','"+ novo.getNome_razao() +
+                "','"+ novo.getCategoria() +"','"+ novo.getData_nasc() +",'"+ novo.getCanal_captacao() +"'," +
+                " '"+ novo.getEmail() +"','"+novo.getTelefone()+"','"+ novo.getFacebook() +"','"+ novo.getTwitter() +
+                "', '"+ novo.getInstagram() +"', '"+ novo.getLinkedIn() +"');";
+
+        Statement statement;
+        try {
+            statement = conn.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            disconnect();
+            return false;
+        }
+
+        disconnect();
+        return true;
+    }
+
+    public boolean updateContato(Contato edit){
+        connect();
+
+        String sql = "UPDATE mydb.Contato SET CPF_CNPJ = '"+ edit.getCpf_cnpj() +"', Nome = '"+ edit.getNome_razao() +
+                "', categoria = '"+ edit.getCategoria() +"', email = '"+ edit.getEmail() +"', data_nasc ='"+
+                edit.getData_nasc() +"', canal_captacao = '"+ edit.getCanal_captacao()
+                +"', telefone = '"+ edit.getTelefone() +"', facebook = '"+ edit.getFacebook()
+                +"', twitter = '"+ edit.getTwitter() +"', instagram = '"+ edit.getInstagram()
+                +"', linkedin = '"+ edit.getLinkedIn() +"' WHERE CPF_CNPJ = '"+ edit.getCpf_cnpj() +"'";
+
+        Statement statement;
+        try {
+            statement = conn.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            disconnect();
+            return false;
+        }
+
+        disconnect();
+        return true;
+    }
+
+    public boolean deleteContato(String cpf_cnpj){
+        connect();
+
+        String sql = "DELETE FROM mydb.Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +"';";
+        Statement statement;
+        try {
+            statement = conn.createStatement();
+            statement.executeUpdate(sql);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            disconnect();
+            return false;
+        }
+
+        disconnect();
+
+        return false;
+    }
 
 
 

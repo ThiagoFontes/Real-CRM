@@ -13,7 +13,7 @@ public class Contato {
     private String email;
     private String telefone;
     private String facebook;
-    private String instragram;
+    private String instagram;
     private String twitter;
     private String linkedIn;
 
@@ -87,12 +87,12 @@ public class Contato {
         this.facebook = facebook;
     }
 
-    public String getInstragram() {
-        return instragram;
+    public String getInstagram() {
+        return instagram;
     }
 
-    public void setInstragram(String instragram) {
-        this.instragram = instragram;
+    public void setInstagram(String instragram) {
+        this.instagram = instragram;
     }
 
     public String getTwitter() {
