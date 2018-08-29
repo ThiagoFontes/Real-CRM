@@ -14,7 +14,7 @@
 -- -----------------------------------------------------
 -- Table `Endereco`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Endereco` ;
+--DROP TABLE IF EXISTS `Endereco` ;
 
 CREATE TABLE IF NOT EXISTS `Endereco` (
   `idEndereco` INT NOT NULL,
@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `Endereco` (
 -- -----------------------------------------------------
 -- Table `Contato`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Contato` ;
+--DROP TABLE IF EXISTS `Contato` ;
 
 CREATE TABLE IF NOT EXISTS `Contato` (
   `CPFCNPJ` VARCHAR(54) NOT NULL,
@@ -59,7 +59,7 @@ CREATE INDEX `fk_Contato_Endereco1_idx` ON `Contato` (`Endereco_idEndereco` ASC)
 -- -----------------------------------------------------
 -- Table `Negociacao`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Negociacao` ;
+--DROP TABLE IF EXISTS `Negociacao` ;
 
 CREATE TABLE IF NOT EXISTS `Negociacao` (
   `idNegociacao` INT NOT NULL,
@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `Negociacao` (
 -- -----------------------------------------------------
 -- Table `PerfilContato`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `PerfilContato` ;
+--DROP TABLE IF EXISTS `PerfilContato` ;
 
 CREATE TABLE IF NOT EXISTS `PerfilContato` (
   `idPerfilContato` INT NOT NULL,
@@ -101,7 +101,7 @@ CREATE INDEX `fk_PerfilContato_Contato1_idx` ON `PerfilContato` (`Contato_CPF_CN
 -- -----------------------------------------------------
 -- Table `Relacionamento`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Relacionamento` ;
+--DROP TABLE IF EXISTS `Relacionamento` ;
 
 CREATE TABLE IF NOT EXISTS `Relacionamento` (
   `idRelacionamento` INT NOT NULL,
@@ -124,7 +124,7 @@ CREATE INDEX `fk_Relacionamento_Contato1_idx` ON `Relacionamento` (`Contato_CPFC
 -- -----------------------------------------------------
 -- Table `Usuario`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Usuario` ;
+--DROP TABLE IF EXISTS `Usuario` ;
 
 CREATE TABLE IF NOT EXISTS `Usuario` (
   `cpf` VARCHAR(45) NOT NULL,
@@ -147,7 +147,7 @@ CREATE INDEX `fk_Usuario_Endereco1_idx` ON `Usuario` (`Endereco_idEndereco` ASC)
 -- -----------------------------------------------------
 -- Table `Contato_has_Negociacao`
 -- -----------------------------------------------------
-DROP TABLE IF EXISTS `Contato_has_Negociacao` ;
+--DROP TABLE IF EXISTS `Contato_has_Negociacao` ;
 
 CREATE TABLE IF NOT EXISTS `Contato_has_Negociacao` (
   `Contato_CPFCNPJ` VARCHAR(54) NOT NULL,

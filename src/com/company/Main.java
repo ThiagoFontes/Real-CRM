@@ -1,6 +1,5 @@
 package com.company;
 import com.company.inc.ComponentMover;
-import com.company.inc.CriarBanco;
 import com.company.inc.CustomBtn;
 import com.company.inc.SQLiteJDBCDriverConnection;
 import com.company.telas.*;
@@ -10,18 +9,21 @@ import javax.swing.plaf.metal.MetalLookAndFeel;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.IOException;
-
 /**
  * Defines the main frame that will be suporting each window content,
  * this way we will use only one JFrame to support everything
  */
 public class Main extends JFrame {
+    private final Color azulClaro = new Color(229, 233,242);
+    private final Color azulMedio = new Color(219, 224,233);
+    private final Color azulEscuro = new Color(71,82,94);
     protected final String menuStrings[] = {"Início", "Contatos", "Negociações", "Relacionamento"};
     private JPanel content = new JPanel(new BorderLayout());
     private JLabel[] label = new JLabel[menuStrings.length];
     private JPanel menu = new JPanel();
     private int current = 0;
+    //Botões das telas internas
+    private CustomBtn[] btnInternos = new CustomBtn[10];
 
     public Main () {
         try {
@@ -33,20 +35,6 @@ public class Main extends JFrame {
                 e1.printStackTrace();
             }
         }
-//        try {
-//            UIManager.setLookAndFeel(new WindowsLookAndFeel());
-//        } catch (UnsupportedLookAndFeelException e) {
-//            SwingUtilities.invokeLater(new Runnable() {
-//                public void run() {
-//                    try {
-//                    UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
-//                        UIManager.setLookAndFeel(new SubstanceCeruleanLookAndFeel());
-//                    } catch (UnsupportedLookAndFeelException e) {
-//                        e.printStackTrace();
-//                    }
-//                }
-//            });
-//        }
         super.setLayout(new BorderLayout());
         JPanel top = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         top.setBackground(Color.DARK_GRAY);
@@ -79,6 +67,7 @@ public class Main extends JFrame {
 
         //criando menu
         createMenu(menu);
+        createInternalButtons();
         //super.getContentPane().setBackground(new Color(229, 233,242));
         // Adicionando componentes a janela principal
         super.add("North", top);
@@ -97,7 +86,7 @@ public class Main extends JFrame {
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
         content.setBackground(new Color(229, 233,242));
-        content.add("Center", new TelaInicial());
+        content.add("Center", new TelaInicial(btnInternos[0]));
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
@@ -108,7 +97,7 @@ public class Main extends JFrame {
         //super.setVisible(false);
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
-        content.add("Center", new TelaContatos());
+        content.add("Center", new TelaContatos(btnInternos[1], btnInternos[2], btnInternos[3]));
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
@@ -119,17 +108,19 @@ public class Main extends JFrame {
         //super.setVisible(false);
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
-        content.add("Center", new CriaEditaRelacionamento("Editar"));
+        content.add("Center", new TelaRelacionamentos(btnInternos[4], btnInternos[5], btnInternos[6]));
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
         super.setVisible(true);
     }
 
+
+
     private  void setTelaNegociacoes() {
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
-        content.add("Center", new TelaNegociacoes());
+        content.add("Center", new TelaNegociacoes(btnInternos[7], btnInternos[8], btnInternos[9]));
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
@@ -201,6 +192,24 @@ public class Main extends JFrame {
         }
     };
 
+    //Criando lista de botões da aplicação
+    private void createInternalButtons () {
+        btnInternos[0] = new CustomBtn("Login", Color.WHITE, azulEscuro);;
+        for (int i = 1; i < btnInternos.length; i++) {
+            switch (i%3) {
+                case 0:
+                    btnInternos[i] = new CustomBtn("Criar", Color.WHITE, azulEscuro);
+                break;
+                case 1:
+                    btnInternos[i] = new CustomBtn("Editar", Color.WHITE, azulEscuro);
+                break;
+                case 2:
+                    btnInternos[i] = new CustomBtn("Excluir", Color.WHITE, azulEscuro);
+                break;
+            }
+        }
+    }
+
     //Create Menu
     private void createMenu(JPanel m) {
         m.setLayout( new FlowLayout(FlowLayout.RIGHT));
@@ -223,27 +232,10 @@ public class Main extends JFrame {
         m.setOpaque(false);
     }
 
-//    public static void createNewDatabase(String fileName) {
-//
-//        String url = "jdbc:sqlite:G:/Real-CRM/src/com/company/database" + fileName;
-//
-//        try (Connection conn = DriverManager.getConnection(url)) {
-//            if (conn != null) {
-//                DatabaseMetaData meta = conn.getMetaData();
-//                System.out.println("The driver name is " + meta.getDriverName());
-//                System.out.println("A new database has been created.");
-//            }
-//
-//        } catch (SQLException e) {
-//            System.out.println(e.getMessage());
-//        }
-//    }
-
     public static void main(String[] args) {
-//      createNewDatabase("local.db");
         SQLiteJDBCDriverConnection meuBD = new SQLiteJDBCDriverConnection();
-        meuBD.criaDB();
-
+//      meuBD.createNewDatabase("local.db");
+//      meuBD.criaTabelas();
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 Main tela = new Main();

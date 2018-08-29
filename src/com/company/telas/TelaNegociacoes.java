@@ -22,7 +22,7 @@ public class TelaNegociacoes extends JPanel {
     private JPanel editPanel;
     private CustomBtn create;
 
-    public TelaNegociacoes() {
+    public TelaNegociacoes(CustomBtn edit, CustomBtn delete, CustomBtn create) {
         super.setLayout(new BorderLayout());
 
         JList contatoList = new JList(lista);
@@ -43,8 +43,8 @@ public class TelaNegociacoes extends JPanel {
         texto.setPreferredSize(new Dimension(500,300));
         texto.setBorder(BorderFactory.createMatteBorder(10, 10, 10, 10,new Color(219, 224,233)));
 
-        edit = new CustomBtn("Editar",Color.WHITE, new Color(71,82,94));
-        delete = new CustomBtn("Excluir",Color.WHITE, new Color(71,82,94));
+        //edit = new CustomBtn("Editar",Color.WHITE, new Color(71,82,94));
+        //delete = new CustomBtn("Excluir",Color.WHITE, new Color(71,82,94));
 
         editPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         editPanel.setOpaque(false);
@@ -52,7 +52,7 @@ public class TelaNegociacoes extends JPanel {
         editPanel.add(delete);
         editPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, new Color(229, 233,242)));
 
-        create = new CustomBtn("Criar",Color.WHITE, new Color(71,82,94));
+        //create = new CustomBtn("Criar",Color.WHITE, new Color(71,82,94));
 
         bounds = new JPanel(new BorderLayout());
         bounds.setBackground(new Color(219, 224,233));
