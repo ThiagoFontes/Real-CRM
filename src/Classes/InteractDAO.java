@@ -139,19 +139,19 @@ public class InteractDAO {
         Contato resultado = null;
 
         connect();
-        String sql = "SELECT * FROM Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +";";
+        String sql = "SELECT * FROM Contato WHERE cpfCnpj = '"+ cpf_cnpj +";";
         Statement statement;
         try{
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while(rs.next()){
-                resultado.setCpfCnpj(rs.getString("CPF_CNPJ"));
+                resultado.setCpfCnpj(rs.getString("cpfCnpj"));
                 resultado.setEmail(rs.getString("email"));
                 resultado.setTelefone(rs.getString("telefone"));
                 resultado.setNomeRazao(rs.getString("Nome"));
                 resultado.setCategoria(rs.getString("categoria"));
-                resultado.setDataNasc(rs.getDate("data_nasc"));
-                resultado.setCanalCaptacao(rs.getString("canal_captacao"));
+                resultado.setDataNasc(rs.getDate("dataNasc"));
+                resultado.setCanalCaptacao(rs.getString("canalCaptacao"));
                 resultado.setFacebook(rs.getString("facebook"));
                 resultado.setInstagram(rs.getString("instagram"));
                 resultado.setTwitter(rs.getString("twitter"));
@@ -190,12 +190,12 @@ public class InteractDAO {
     public boolean updateContato(Contato edit){
         connect();
 
-        String sql = "UPDATE Contato SET CPF_CNPJ = '"+ edit.getCpfCnpj() +"', Nome = '"+ edit.getNomeRazao() +
-                "', categoria = '"+ edit.getCategoria() +"', email = '"+ edit.getEmail() +"', data_nasc ='"+
-                edit.getDataNasc() +"', canal_captacao = '"+ edit.getCanalCaptacao()
+        String sql = "UPDATE Contato SET cpfCnpj = '"+ edit.getCpfCnpj() +"', Nome = '"+ edit.getNomeRazao() +
+                "', categoria = '"+ edit.getCategoria() +"', email = '"+ edit.getEmail() +"', dataNasc ='"+
+                edit.getDataNasc() +"', canalCaptacao = '"+ edit.getCanalCaptacao()
                 +"', telefone = '"+ edit.getTelefone() +"', facebook = '"+ edit.getFacebook()
                 +"', twitter = '"+ edit.getTwitter() +"', instagram = '"+ edit.getInstagram()
-                +"', linkedin = '"+ edit.getLinkedIn() +"' WHERE CPF_CNPJ = '"+ edit.getCpfCnpj() +"'";
+                +"', linkedin = '"+ edit.getLinkedIn() +"' WHERE cpfCnpj = '"+ edit.getCpfCnpj() +"'";
 
         Statement statement;
         try {
@@ -211,10 +211,10 @@ public class InteractDAO {
         return true;
     }
 
-    public boolean deleteContato(String cpf_cnpj){
+    public boolean deleteContato(String cpfCnpj){
         connect();
 
-        String sql = "DELETE FROM Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +"';";
+        String sql = "DELETE FROM Contato WHERE cpfCnpj = '"+ cpfCnpj +"';";
         Statement statement;
         try {
             statement = conn.createStatement();
@@ -242,16 +242,21 @@ public class InteractDAO {
     }
 
     //metodos para crud de Endereço
-    public Endereco buscarEndereco(String cpf_cnpj){
+    public Endereco buscarEndereco(String cpfCnpj){
         Endereco local = null;
         connect();
-        String sql = "SELECT * FROM Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +";";
+        String sql = "SELECT * FROM Contato WHERE cpfCnpj = '"+ cpfCnpj +";";
         Statement statement;
         try{
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while(rs.next()){
+                local.setLogradouro(rs.getString("logradouro"));
                 local.setBairro(rs.getString("bairro"));
+                local.setCep(rs.getString("cep"));
+                local.setCidade(rs.getString("cidade"));
+                local.setEstado(rs.getString("estado"));
+                local.setNumero(rs.getInt("numero"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

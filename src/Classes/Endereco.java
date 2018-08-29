@@ -10,8 +10,7 @@ public class Endereco {
     private String estado;
 
     //construtor da classe
-    public Endereco(int idEndereco, String logradouro, int numero, String bairro, String cep, String cidade, String estado) {
-        this.idEndereco = idEndereco;
+    public Endereco( String logradouro, int numero, String bairro, String cep, String cidade, String estado) {
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
