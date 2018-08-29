@@ -13,10 +13,6 @@ public class PerfilContato {
     // Constrututor vazio
     public PerfilContato() {}
 
-
-
-
-
     //gets e sets
     public Date getUltima_alteracao() {
         return ultima_alteracao;
