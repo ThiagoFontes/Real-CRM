@@ -1,25 +1,16 @@
 package com.company;
 import com.company.inc.ComponentMover;
+import com.company.inc.CriarBanco;
 import com.company.inc.CustomBtn;
 import com.company.inc.SQLiteJDBCDriverConnection;
 import com.company.telas.*;
-import com.sun.java.swing.plaf.motif.MotifLookAndFeel;
-import com.sun.java.swing.plaf.windows.WindowsClassicLookAndFeel;
 import com.sun.java.swing.plaf.windows.WindowsLookAndFeel;
-import org.pushingpixels.substance.api.skin.*;
-
 import javax.swing.*;
 import javax.swing.plaf.metal.MetalLookAndFeel;
-import javax.swing.plaf.multi.MultiLookAndFeel;
-import javax.swing.plaf.nimbus.NimbusLookAndFeel;
-import javax.swing.plaf.synth.SynthLookAndFeel;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.io.IOException;
 
 /**
  * Defines the main frame that will be suporting each window content,
@@ -128,7 +119,7 @@ public class Main extends JFrame {
         //super.setVisible(false);
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
-        content.add("Center", new CriaEditaRelacionamento());
+        content.add("Center", new CriaEditaRelacionamento("Editar"));
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
@@ -249,9 +240,10 @@ public class Main extends JFrame {
 //    }
 
     public static void main(String[] args) {
-//        createNewDatabase("local.db");
-        SQLiteJDBCDriverConnection con = new SQLiteJDBCDriverConnection();
-        con.connect();
+//      createNewDatabase("local.db");
+        SQLiteJDBCDriverConnection meuBD = new SQLiteJDBCDriverConnection();
+        meuBD.criaDB();
+
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
                 Main tela = new Main();

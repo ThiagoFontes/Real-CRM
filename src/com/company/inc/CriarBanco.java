@@ -2,47 +2,29 @@ package com.company.inc;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 /**
- * Edited by Thiago Fontes on 21/08/2018.
+ * Created by Thiago Fontes on 28/08/2018.
  */
-public class SQLiteJDBCDriverConnection {
-    /**
-     * Connect to a sample database
-     */
-    public static Connection connect() {
-        Connection conn = null;
-        try {
-            // db parameters
-            String url = "jdbc:sqlite:src/com/company/database/local.db";
-            // create a connection to the database
-            conn = DriverManager.getConnection(url);
+public class CriarBanco {
+    private String query;
+    private Connection conn;
 
-            System.out.println("Connection to SQLite has been established.");
-
-        } catch (SQLException e) {
-            System.out.println(e.getMessage());
-        } finally {
-            try {
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (SQLException ex) {
-                System.out.println(ex.getMessage());
-            }
-        }
-        return conn;
+    public CriarBanco (Connection conn) {
+        this.conn = conn;
     }
 
-    public void criaDB () {
+    public void criaDB ( String sql) {
         String url = "jdbc:sqlite:src/com/company/database/local.db";
         try (Connection conn = DriverManager.getConnection(url);
              Statement stmt = conn.createStatement()) {
             // create a new table
+            stmt.execute(query);
             executeDBScripts("G:\\BCK\\UFS\\2018.1\\EDS\\Real-CRM\\src\\com\\company\\database\\criaTabelas.sql",stmt);
         } catch (SQLException e) {
             System.out.println(e.getMessage());

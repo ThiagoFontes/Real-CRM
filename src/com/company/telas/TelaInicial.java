@@ -1,8 +1,6 @@
 package com.company.telas;
 
 import com.company.inc.CustomBtn;
-import org.pushingpixels.substance.api.UiThreadingViolationException;
-
 import javax.swing.*;
 import java.awt.*;
 

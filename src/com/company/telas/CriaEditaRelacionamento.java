@@ -1,5 +1,6 @@
 package com.company.telas;
 
+import com.company.inc.CustomBtn;
 import com.company.inc.HintTextFieldUI;
 
 import javax.swing.*;
@@ -12,8 +13,11 @@ import java.awt.*;
 public class CriaEditaRelacionamento extends JPanel {
     private final Color azulClaro = new Color(229, 233,242);
     private final Color azulMedio = new Color(219, 224,233);
-    private final MatteBorder bordaCampos = BorderFactory.createMatteBorder(5, 1, 2, 1,azulMedio);
+    private final Color azulEscuro = new Color(71,82,94);
+    private final Color corTitulo = new Color(0x47525E);
+    private final MatteBorder bordaCampos = BorderFactory.createMatteBorder(2, 5, 2, 5,azulMedio);
     private JPanel c1;
+    private JLabel title;
     private JComboBox status;
     private String strStatus[] = { "agendado", "cancelado", "concluído" };
     private JTextField data;
@@ -21,14 +25,18 @@ public class CriaEditaRelacionamento extends JPanel {
     private JComboBox tipo;
     private String strTipos[] = { "captação", "reclamação", "sugestão", "elogio"};
     private JTextField acao;
+    private JPanel c2;
+    private JButton save;
 
-    public CriaEditaRelacionamento() {
+    public CriaEditaRelacionamento( String texto) {
+        super.setLayout(new BorderLayout());
         c1 = new JPanel();
         c1.setLayout(new BoxLayout(c1,BoxLayout.Y_AXIS));
-        JLabel title = new JLabel("Cria/Edita", JLabel.CENTER);
+        title = new JLabel(texto,JLabel.CENTER);
         title.setFont(new Font("Sans", Font.PLAIN, 30));
-        title.setBorder(bordaCampos);
         title.setBackground(azulMedio);
+        title.setForeground(corTitulo);
+        title.setBorder(bordaCampos);
 
         title.setOpaque(true);
 
@@ -57,15 +65,33 @@ public class CriaEditaRelacionamento extends JPanel {
         acao.setPreferredSize(new Dimension(200,30));
         acao.setBorder(bordaCampos);
 
+        c2 = new JPanel();
+        c2.setLayout(new BorderLayout());
+
+        save = new CustomBtn("Salvar",Color.WHITE, azulEscuro);
+        save.setMaximumSize(new Dimension(getWidth(),30));
+        save.setPreferredSize(new Dimension(getWidth(),30));
+
+        c1.setBackground(azulMedio);
         c1.add(title);
         c1.add(status);
         c1.add(data);
         c1.add(padroes);
         c1.add(tipo);
         c1.add(acao);
-        super.add(c1);
-        super.setBorder(BorderFactory.createMatteBorder(30, 250, 30, 250,azulClaro));
-        super.setBackground(azulMedio);
-        //super.setLayout(new BoxLayout(this,BoxLayout.Y_AXIS));
+        c1.setPreferredSize(new Dimension(300,200));
+        c1.setMaximumSize(new Dimension(300,200));
+        c1.setBackground(azulMedio);
+        c1.setBorder(BorderFactory.createMatteBorder(50, 250, 100, 250,azulClaro));
+        c2.add(save, BorderLayout.NORTH);
+
+        super.add(c1,BorderLayout.CENTER);
+        super.add(c2,BorderLayout.SOUTH);
+        super.setBorder(BorderFactory.createMatteBorder(30, 30, 30, 30,azulClaro));
+        super.setBackground(azulClaro);
+    }
+
+    public void setTitle(JLabel title) {
+        this.title = title;
     }
 }
