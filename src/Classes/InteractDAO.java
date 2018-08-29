@@ -237,7 +237,6 @@ public class InteractDAO {
         //while(){
         // incompleto , nao sei como listar
         //}
-
         disconnect();
         return lista;
     }

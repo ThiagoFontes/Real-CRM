@@ -48,7 +48,7 @@ public class Main extends JFrame {
 //            SwingUtilities.invokeLater(new Runnable() {
 //                public void run() {
 //                    try {
-////                    UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
+//                    UIManager.setLookAndFeel(new SubstanceGraphiteLookAndFeel());
 //                        UIManager.setLookAndFeel(new SubstanceCeruleanLookAndFeel());
 //                    } catch (UnsupportedLookAndFeelException e) {
 //                        e.printStackTrace();
