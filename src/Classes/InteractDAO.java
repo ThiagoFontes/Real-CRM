@@ -241,4 +241,11 @@ public class InteractDAO {
         return lista;
     }
 
+    //metodos para crud de Endereço
+
+
+
+    //metodos para Crud de PerfilContato
+
+
 }
