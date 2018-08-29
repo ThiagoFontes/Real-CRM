@@ -3,10 +3,10 @@ package Classes;
 import java.util.Date;
 
 public class Negociacao {
-    private int id_negociacao;
+    private int idNegociacao;
     private char status;
-    private Date data_abertura;
-    private Date data_efetivacao;
+    private Date dataAbertura;
+    private Date dataEfetivacao;
     private String tipo;
     private float valor;
     private String descricao;
@@ -15,12 +15,12 @@ public class Negociacao {
     public Negociacao() {}
 
     //gets e sets
-    public int getId_negociacao() {
-        return id_negociacao;
+    public int getIdNegociacao() {
+        return idNegociacao;
     }
 
-    public void setId_negociacao(int id_negociacao) {
-        this.id_negociacao = id_negociacao;
+    public void setIdNegociacao(int idNegociacao) {
+        this.idNegociacao = idNegociacao;
     }
 
     public char getStatus() {
@@ -31,20 +31,20 @@ public class Negociacao {
         this.status = status;
     }
 
-    public Date getData_abertura() {
-        return data_abertura;
+    public Date getDataAbertura() {
+        return dataAbertura;
     }
 
-    public void setData_abertura(Date data_abertura) {
-        this.data_abertura = data_abertura;
+    public void setDataAbertura(Date dataAbertura) {
+        this.dataAbertura = dataAbertura;
     }
 
-    public Date getData_efetivacao() {
-        return data_efetivacao;
+    public Date getDataEfetivacao() {
+        return dataEfetivacao;
     }
 
-    public void setData_efetivacao(Date data_efetivacao) {
-        this.data_efetivacao = data_efetivacao;
+    public void setDataEfetivacao(Date dataEfetivacao) {
+        this.dataEfetivacao = dataEfetivacao;
     }
 
     public String getTipo() {

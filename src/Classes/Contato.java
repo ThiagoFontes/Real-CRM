@@ -5,11 +5,11 @@ import java.sql.Date;
 public class Contato {
 
     // atributos da classe de acordo com o diagrama de classe a nivel de projeto
-    private String cpf_cnpj;
-    private String nome_razao;
+    private String cpfCnpj;
+    private String nomeRazao;
     private String categoria;
-    private Date data_nasc;
-    private String canal_captacao;
+    private Date dataNasc;
+    private String canalCaptacao;
     private String email;
     private String telefone;
     private String facebook;
@@ -20,23 +20,24 @@ public class Contato {
     //CONSTRUTOR VAZIO
     public Contato() {}
 
+
     //Metodos listados no diagrama são apenas os gets e sets segundo professor
 
     //gets and sets dos atributos da classe
-    public String getCpf_cnpj() {
-        return cpf_cnpj;
+    public String getCpfCnpj() {
+        return cpfCnpj;
     }
 
-    public void setCpf_cnpj(String cpf_cnpj) {
-        this.cpf_cnpj = cpf_cnpj;
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
     }
 
-    public String getNome_razao() {
-        return nome_razao;
+    public String getNomeRazao() {
+        return nomeRazao;
     }
 
-    public void setNome_razao(String nome_razao) {
-        this.nome_razao = nome_razao;
+    public void setNomeRazao(String nomeRazao) {
+        this.nomeRazao = nomeRazao;
     }
 
     public String getCategoria() {
@@ -47,20 +48,20 @@ public class Contato {
         this.categoria = categoria;
     }
 
-    public Date getData_nasc() {
-        return data_nasc;
+    public Date getDataNasc() {
+        return dataNasc;
     }
 
-    public void setData_nasc(Date data_nasc) {
-        this.data_nasc = data_nasc;
+    public void setDataNasc(Date dataNasc) {
+        this.dataNasc = dataNasc;
     }
 
-    public String getCanal_captacao() {
-        return canal_captacao;
+    public String getCanalCaptacao() {
+        return canalCaptacao;
     }
 
-    public void setCanal_captacao(String canal_captacao) {
-        this.canal_captacao = canal_captacao;
+    public void setCanalCaptacao(String canalCaptacao) {
+        this.canalCaptacao = canalCaptacao;
     }
 
     public String getEmail() {

@@ -3,23 +3,22 @@ package Classes;
 import java.util.Date;
 
 public class PerfilContato {
-    private Date ultima_alteracao;
+    private Date ultimaAlteracao;
     private String potencial;
-    private String acoes_futuras;
-    private String padrao_comportamento;
-    private String temp_md_compra;
-    private String principal_interesse;
+    private String acoesFuturas;
+    private String padraoComportamento;
+    private String principalInteresse;
 
     // Constrututor vazio
     public PerfilContato() {}
 
     //gets e sets
-    public Date getUltima_alteracao() {
-        return ultima_alteracao;
+    public Date getUltimaAlteracao() {
+        return ultimaAlteracao;
     }
 
-    public void setUltima_alteracao(Date ultima_alteracao) {
-        this.ultima_alteracao = ultima_alteracao;
+    public void setUltimaAlteracao(Date ultimaAlteracao) {
+        this.ultimaAlteracao = ultimaAlteracao;
     }
 
     public String getPotencial() {
@@ -30,35 +29,27 @@ public class PerfilContato {
         this.potencial = potencial;
     }
 
-    public String getAcoes_futuras() {
-        return acoes_futuras;
+    public String getAcoesFuturas() {
+        return acoesFuturas;
     }
 
-    public void setAcoes_futuras(String acoes_futuras) {
-        this.acoes_futuras = acoes_futuras;
+    public void setAcoesFuturas(String acoesFuturas) {
+        this.acoesFuturas = acoesFuturas;
     }
 
-    public String getPadrao_comportamento() {
-        return padrao_comportamento;
+    public String getPadraoComportamento() {
+        return padraoComportamento;
     }
 
-    public void setPadrao_comportamento(String padrao_comportamento) {
-        this.padrao_comportamento = padrao_comportamento;
-    }
-
-    public String getTemp_md_compra() {
-        return temp_md_compra;
-    }
-
-    public void setTemp_md_compra(String temp_md_compra) {
-        this.temp_md_compra = temp_md_compra;
+    public void setPadrao_comportamento(String padraoComportamento) {
+        this.padraoComportamento = padraoComportamento;
     }
 
     public String getPrincipal_interesse() {
-        return principal_interesse;
+        return principalInteresse;
     }
 
-    public void setPrincipal_interesse(String principal_interesse) {
-        this.principal_interesse = principal_interesse;
+    public void setPrincipal_interesse(String principalInteresse) {
+        this.principalInteresse = principalInteresse;
     }
 }

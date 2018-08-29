@@ -54,7 +54,7 @@ public class InteractDAO {
     public boolean createUsuario(Usuario novo){
         connect();
 
-        String sql = "INSERT INTO mydb.Usuario VALUES('"+ novo.getCpf() +"','"+ novo.getNome() +
+        String sql = "INSERT INTO Usuario VALUES('"+ novo.getCpf() +"','"+ novo.getNome() +
                 "','"+ novo.getSenha() +"','"+ novo.getEmail() +"')";
 
         Statement statement;
@@ -74,7 +74,7 @@ public class InteractDAO {
     public boolean updateUsuario(Usuario edit){
        connect();
 
-       String sql = "UPDATE mydb.Usuario SET cpf = '"+ edit.getCpf() +"', nome = '"+ edit.getNome() +
+       String sql = "UPDATE Usuario SET cpf = '"+ edit.getCpf() +"', nome = '"+ edit.getNome() +
                "', senha = '"+ edit.getSenha() +"', email = '"+ edit.getEmail() +"' WHERE cpf = '"+ edit.getCpf() +"'";
 
         Statement statement;
@@ -94,7 +94,7 @@ public class InteractDAO {
     public boolean deleteUsuario(Usuario delete){
         connect();
 
-        String sql = "DELETE FROM mydb.Usuario WHERE cpf = '"+ delete.getCpf()+"', nome = '"+ delete.getNome() +
+        String sql = "DELETE FROM Usuario WHERE cpf = '"+ delete.getCpf()+"', nome = '"+ delete.getNome() +
                 "', senha = '"+ delete.getSenha() +"', email = '"+ delete.getEmail() +"' WHERE cpf = '"+ delete.getCpf() +"'";
         Statement statement;
         try {
@@ -113,7 +113,7 @@ public class InteractDAO {
     public Usuario buscarUsuario(String cpf, String email){
         Usuario user = null;
         connect();
-        String sql = "SELECT * FROM mydb.Usuario WHERE cpf = '"+ cpf +"', email = '"+ email +"';";
+        String sql = "SELECT * FROM Usuario WHERE cpf = '"+ cpf +"', email = '"+ email +"';";
         Statement statement;
         try{
             statement = conn.createStatement();
@@ -139,19 +139,19 @@ public class InteractDAO {
         Contato resultado = null;
 
         connect();
-        String sql = "SELECT * FROM mydb.Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +";";
+        String sql = "SELECT * FROM Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +";";
         Statement statement;
         try{
             statement = conn.createStatement();
             ResultSet rs = statement.executeQuery(sql);
             while(rs.next()){
-                resultado.setCpf_cnpj(rs.getString("CPF_CNPJ"));
+                resultado.setCpfCnpj(rs.getString("CPF_CNPJ"));
                 resultado.setEmail(rs.getString("email"));
                 resultado.setTelefone(rs.getString("telefone"));
-                resultado.setNome_razao(rs.getString("Nome"));
+                resultado.setNomeRazao(rs.getString("Nome"));
                 resultado.setCategoria(rs.getString("categoria"));
-                resultado.setData_nasc(rs.getDate("data_nasc"));
-                resultado.setCanal_captacao(rs.getString("canal_captacao"));
+                resultado.setDataNasc(rs.getDate("data_nasc"));
+                resultado.setCanalCaptacao(rs.getString("canal_captacao"));
                 resultado.setFacebook(rs.getString("facebook"));
                 resultado.setInstagram(rs.getString("instagram"));
                 resultado.setTwitter(rs.getString("twitter"));
@@ -168,8 +168,8 @@ public class InteractDAO {
     public boolean createContato(Contato novo){
         connect();
 
-        String sql = "INSERT INTO mydb.Contato VALUES('"+ novo.getCpf_cnpj() +"','"+ novo.getNome_razao() +
-                "','"+ novo.getCategoria() +"','"+ novo.getData_nasc() +",'"+ novo.getCanal_captacao() +"'," +
+        String sql = "INSERT INTO Contato VALUES('"+ novo.getCpfCnpj() +"','"+ novo.getNomeRazao() +
+                "','"+ novo.getCategoria() +"','"+ novo.getDataNasc() +",'"+ novo.getCanalCaptacao() +"'," +
                 " '"+ novo.getEmail() +"','"+novo.getTelefone()+"','"+ novo.getFacebook() +"','"+ novo.getTwitter() +
                 "', '"+ novo.getInstagram() +"', '"+ novo.getLinkedIn() +"');";
 
@@ -190,12 +190,12 @@ public class InteractDAO {
     public boolean updateContato(Contato edit){
         connect();
 
-        String sql = "UPDATE mydb.Contato SET CPF_CNPJ = '"+ edit.getCpf_cnpj() +"', Nome = '"+ edit.getNome_razao() +
+        String sql = "UPDATE Contato SET CPF_CNPJ = '"+ edit.getCpfCnpj() +"', Nome = '"+ edit.getNomeRazao() +
                 "', categoria = '"+ edit.getCategoria() +"', email = '"+ edit.getEmail() +"', data_nasc ='"+
-                edit.getData_nasc() +"', canal_captacao = '"+ edit.getCanal_captacao()
+                edit.getDataNasc() +"', canal_captacao = '"+ edit.getCanalCaptacao()
                 +"', telefone = '"+ edit.getTelefone() +"', facebook = '"+ edit.getFacebook()
                 +"', twitter = '"+ edit.getTwitter() +"', instagram = '"+ edit.getInstagram()
-                +"', linkedin = '"+ edit.getLinkedIn() +"' WHERE CPF_CNPJ = '"+ edit.getCpf_cnpj() +"'";
+                +"', linkedin = '"+ edit.getLinkedIn() +"' WHERE CPF_CNPJ = '"+ edit.getCpfCnpj() +"'";
 
         Statement statement;
         try {
@@ -214,7 +214,7 @@ public class InteractDAO {
     public boolean deleteContato(String cpf_cnpj){
         connect();
 
-        String sql = "DELETE FROM mydb.Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +"';";
+        String sql = "DELETE FROM Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +"';";
         Statement statement;
         try {
             statement = conn.createStatement();
@@ -233,7 +233,7 @@ public class InteractDAO {
     public List<Contato> listarContatos(){
         List<Contato> lista = new ArrayList<>();
         connect();
-        String sql = "SELECT * FROM mydb.Contato ;";
+        String sql = "SELECT * FROM Contato ;";
         //while(){
         // incompleto , nao sei como listar
         //}
@@ -242,7 +242,24 @@ public class InteractDAO {
     }
 
     //metodos para crud de Endereço
+    public Endereco buscarEndereco(String cpf_cnpj){
+        Endereco local = null;
+        connect();
+        String sql = "SELECT * FROM Contato WHERE CPF_CNPJ = '"+ cpf_cnpj +";";
+        Statement statement;
+        try{
+            statement = conn.createStatement();
+            ResultSet rs = statement.executeQuery(sql);
+            while(rs.next()){
+                local.setBairro(rs.getString("bairro"));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
 
+        disconnect();
+        return local;
+    }
 
 
     //metodos para Crud de PerfilContato

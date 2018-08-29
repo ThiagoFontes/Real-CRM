@@ -1,7 +1,7 @@
 package Classes;
 
 public class Endereco {
-    private String titulo;
+    private int idEndereco;
     private String logradouro;
     private int numero;
     private String bairro;
@@ -10,8 +10,8 @@ public class Endereco {
     private String estado;
 
     //construtor da classe
-    public Endereco(String titulo, String logradouro, int numero, String bairro, String cep, String cidade, String estado) {
-        this.titulo = titulo;
+    public Endereco(int idEndereco, String logradouro, int numero, String bairro, String cep, String cidade, String estado) {
+        this.idEndereco = idEndereco;
         this.logradouro = logradouro;
         this.numero = numero;
         this.bairro = bairro;
@@ -22,12 +22,14 @@ public class Endereco {
 
 
     //gets e sets da classe
-    public String getTitulo() {
-        return titulo;
+
+
+    public int getIdEndereco() {
+        return idEndereco;
     }
 
-    public void setTitulo(String titulo) {
-        this.titulo = titulo;
+    public void setIdEndereco(int idEndereco) {
+        this.idEndereco = idEndereco;
     }
 
     public String getLogradouro() {

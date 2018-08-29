@@ -3,10 +3,10 @@ package Classes;
 import java.util.Date;
 
 public class Relacionamento {
-    private int id_relacionamento;
+    private int idRelacionamento;
     private char status;
-    private Date data_reg;
-    private String desc_reg;
+    private Date dataReg;
+    private String descReg;
     private String tipo;
 
     // classe tem controle, construtor vazio
@@ -14,12 +14,12 @@ public class Relacionamento {
 
     //gets e sets
 
-    public int getId_relacionamento() {
-        return id_relacionamento;
+    public int getIdRelacionamento() {
+        return idRelacionamento;
     }
 
-    public void setId_relacionamento(int id_relacionamento) {
-        this.id_relacionamento = id_relacionamento;
+    public void setIdRelacionamento(int idRelacionamento) {
+        this.idRelacionamento = idRelacionamento;
     }
 
     public char getStatus() {
@@ -30,20 +30,20 @@ public class Relacionamento {
         this.status = status;
     }
 
-    public Date getData_reg() {
-        return data_reg;
+    public Date getDataReg() {
+        return dataReg;
     }
 
-    public void setData_reg(Date data_reg) {
-        this.data_reg = data_reg;
+    public void setDataReg(Date dataReg) {
+        this.dataReg = dataReg;
     }
 
-    public String getDesc_reg() {
-        return desc_reg;
+    public String getDescReg() {
+        return descReg;
     }
 
-    public void setDesc_reg(String desc_reg) {
-        this.desc_reg = desc_reg;
+    public void setDescReg(String descReg) {
+        this.descReg = descReg;
     }
 
     public String getTipo() {
