@@ -56,7 +56,7 @@ public class TelaRelacionamentos extends JPanel {
         editPanel.setOpaque(false);
         editPanel.add(edit);
         editPanel.add(delete);
-        editPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, new Color(229, 233,242)));
+        editPanel.setBorder(BorderFactory.createMatteBorder(0, 0, 10, 0, azulClaro));
 
         //create = new CustomBtn("Criar",Color.WHITE, new Color(71,82,94));
 
@@ -70,6 +70,6 @@ public class TelaRelacionamentos extends JPanel {
         super.add(sidePanel, BorderLayout.WEST);
         super.add(bounds, BorderLayout.CENTER);
         super.add(create, BorderLayout.SOUTH);
-        super.setBorder(BorderFactory.createMatteBorder(30, 30, 30, 30, new Color(229, 233,242)));
+        super.setBorder(BorderFactory.createMatteBorder(30, 30, 30, 30,azulClaro));
     }
 }

@@ -104,11 +104,21 @@ public class Main extends JFrame {
         super.setVisible(true);
     }
 
-    private  void setTelaRelacionamentos () {
+    private void setTelaRelacionamentos () {
         //super.setVisible(false);
         content.removeAll();
         content.add(menu, BorderLayout.NORTH);
         content.add("Center", new TelaRelacionamentos(btnInternos[4], btnInternos[5], btnInternos[6]));
+        super.add(BorderLayout.CENTER,this.content);
+        content.validate();
+        content.repaint();
+        super.setVisible(true);
+    }
+
+    private void setTelaCriaEditaRelacionamentos (String text) {
+        content.removeAll();
+        content.add(menu, BorderLayout.NORTH);
+        content.add("Center", new CriaEditaRelacionamento(text));
         super.add(BorderLayout.CENTER,this.content);
         content.validate();
         content.repaint();
@@ -192,9 +202,73 @@ public class Main extends JFrame {
         }
     };
 
+    private MouseListener ml2 = new MouseListener() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            for (int k = 0; k < btnInternos.length; k++) {
+                if(e.getSource() == btnInternos[k]) {
+                    System.out.printf("Hi! %d", k);
+                    switch (k) {
+                        case 0: //Login
+
+                        break;
+                        case 1: //Editar Contato
+
+                        break;
+                        case 2: //Excluir Contato
+
+                        break;
+                        case 3: //Criar Contato
+
+                        break;
+                        case 4: //Editar Relacionamento
+                            setTelaCriaEditaRelacionamentos("Editar");
+                        break;
+                        case 5: //Excluir Relacionamento
+
+                        break;
+                        case 6: //Criar  Relacionamento
+                            setTelaCriaEditaRelacionamentos("Criar");
+                        break;
+                        case 7: //Editar Negociação
+
+                        break;
+                        case 8: //Excluir Negociação
+
+                        break;
+                        case 9: //Criar Relacionamento
+
+                        break;
+                    }
+                }
+            }
+        }
+
+        @Override
+        public void mousePressed(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseReleased(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseEntered(MouseEvent e) {
+
+        }
+
+        @Override
+        public void mouseExited(MouseEvent e) {
+
+        }
+    };
+
     //Criando lista de botões da aplicação
     private void createInternalButtons () {
         btnInternos[0] = new CustomBtn("Login", Color.WHITE, azulEscuro);;
+        btnInternos[0].addMouseListener(ml2);
         for (int i = 1; i < btnInternos.length; i++) {
             switch (i%3) {
                 case 0:
@@ -207,6 +281,7 @@ public class Main extends JFrame {
                     btnInternos[i] = new CustomBtn("Excluir", Color.WHITE, azulEscuro);
                 break;
             }
+            btnInternos[i].addMouseListener(ml2);
         }
     }
 
